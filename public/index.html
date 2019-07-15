@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Nodejs file sharing application">
+    <link rel="icon" href="./css/assests/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <title>File Transfer</title>
+</head>
+
+<body>
+    <a href="https://github.com/raghav4/file-transfer"><img style="position: absolute; top: 0; left: 0; border: 0;"
+            src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    <br>
+    <br>
+    <br>
+    <h1 class="heading">File Transfer <i class="far fa-share-square"></i></h1>
+    <div class="ui segment box">
+        <h4>Upload your files here <i class="fas fa-upload"></i></h4>
+        
+        <form class="ui form" action="/transfer" method="post" name="K" id="usrform">
+            <div class="field">
+                <input type="file" name="upload" id="" enctype="multipart/form-data">
+                <label>Email to :</label>
+                <input type="email" name="primaryEmail" placeholder="Email" id="">
+                <label>Your Email</label>
+                <input type="email" name="seconaryEmail" placeholder="Email" id="">
+                <label>Message</label>
+                <textarea rows="2" spellcheck="true" name="message" form="usrform" placeholder="Enter your message here"
+                    id="inputmessage"></textarea>
+            </div>
+            <button class="ui button primary" type="submit">Submit</button> <!-- <i class="fas fa-check"></i> -->
+        </form>
+    </div>
+</body>
+
+</html>

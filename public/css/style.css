@@ -1,0 +1,44 @@
+body {
+    background: #FF8008;
+    background: -webkit-linear-gradient(to right, #FFC837, #FF8008);
+    background: linear-gradient(to right, #FFC837, #FF8008);
+    overflow: hidden;
+}
+
+.heading {
+    color: white;
+    text-align: center;
+    margin-top: 25px !important;
+}
+
+h1 {
+    font-family: 'Inter Regular' !important;
+    text-shadow: 2px 2px #d35400; /*ff0000*/
+}
+h4{
+    font-family: 'Inter Regular' !important;
+}
+.block {
+    display: inline-block !important;
+}
+
+.box {
+    margin-left: 55px !important;
+    margin-right: 55px !important;
+    border: none !important;    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+#inputfile{
+    border: none !important;
+    text-decoration: none !important;
+    font-family: 'Inter Regular' !important;
+}
+#inputmessage{
+    /* font-family: 'Inter Regular' !important; */
+}
+@font-face {
+    font-family: 'Inter Regular';
+    font-style: normal;
+    font-weight: normal !important;
+    src: local('Inter Regular'), url('./fonts/Inter-Regular.woff') format('woff');
+}

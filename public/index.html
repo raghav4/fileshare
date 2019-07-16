@@ -24,13 +24,13 @@
     <div class="ui segment box">
         <h4>Upload your files here <i class="fas fa-upload"></i></h4>
         
-        <form class="ui form" action="/transfer" method="post" name="K" id="usrform">
+        <input type="file" name="file" form="usrform">
+        <form class="ui form" action="/transfer" method="POST" id="usrform" enctype="multipart/form-data">
             <div class="field">
-                <input type="file" name="upload" id="" enctype="multipart/form-data">
                 <label>Email to :</label>
                 <input type="email" name="primaryEmail" placeholder="Email" id="">
-                <label>Your Email</label>
-                <input type="email" name="seconaryEmail" placeholder="Email" id="">
+                <label>Your Name</label>
+                <input type="text" name="sender" placeholder="Your Name" id="">
                 <label>Message</label>
                 <textarea rows="2" spellcheck="true" name="message" form="usrform" placeholder="Enter your message here"
                     id="inputmessage"></textarea>

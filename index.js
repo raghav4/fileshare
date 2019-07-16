@@ -1,11 +1,12 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const path = require('path');
+const multer = require('multer');
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv').config();
 const cloudinary = require('cloudinary').v2;
-const fileUpload = require('express-fileupload');
-// const upload = require('./routes/multer');
+const storage = require('./routes/multer');
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
@@ -13,48 +14,28 @@ cloudinary.config({
     api_secret: process.env.API_SECRET
 });
 
+// Middlewares
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
     extended: false
 }));
-app.use(fileUpload({
-    useTempFiles: true
-}));
+app.use(multer({
+    storage: storage
+}).single('file'));
 
-app.post('/transfer', (req, res, next) => {
-    const file = req.files;
-    console.log(file);
-    return res.send(file);
-    // cloudinary.uploader.upload(file.tempFilePath,(err, result) => {
-    //     console.log(result);
-    // })
+
+app.post('/transfer', async(req, res) => {
+    const file = req.file;
+    const result = await cloudinary.uploader.upload(file.path);
+    const ans = {
+        'message' : req.body.message,
+        'from' : req.body.sender,
+        'to' : req.body.primaryEmail,
+        'url' : result.secure_url
+    }
+    //SendEmail(ans);
+    res.json(ans);
 });
 
-// let transporter = nodemailer.createTransport({
-//     service: 'gmail',
-//     secure: false,
-//     port: 25,
-//     auth: {
-//         user: 'raghav@gmail.com',
-//         pass: ''
-//     },
-//     tls: {
-//         rejectUnauthorized: false
-//     }
-// });
-
-// let HelperOptions = {
-//     from: '"File Transfer Online" <raghav@mail.com>',
-//     to: 'raghavsyt@gmail.com',
-//     subject: 'Download your files',
-//     text: 'Hello there!'   
-// };
-// transporter.sendMail(HelperOptions, (error, info) => {
-//     if(error) return console.log(error);
-
-//     console.log(`Email send and info is ${info}`); 
-// })
 const PORT = process.env.PORT || 3000;
 app.listen((PORT), () => console.log(`Listening on port ${PORT}...`));
-
-//{ resource_type: "raw" }, 

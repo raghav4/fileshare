@@ -7,6 +7,7 @@ const nodemailer = require('nodemailer');
 const dotenv = require('dotenv').config();
 const cloudinary = require('cloudinary').v2;
 const storage = require('./routes/multer');
+const SendEmail = require('./routes/mail');
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
@@ -24,16 +25,18 @@ app.use(multer({
 }).single('file'));
 
 
-app.post('/transfer', async(req, res) => {
+app.post('/transfer', async (req, res) => {
     const file = req.file;
     const result = await cloudinary.uploader.upload(file.path);
     const ans = {
-        'message' : req.body.message,
-        'from' : req.body.sender,
-        'to' : req.body.primaryEmail,
-        'url' : result.secure_url
+        'message': req.body.message,
+        'from': req.body.sender,
+        'to': req.body.primaryEmail,
+        'url': result.secure_url,
+        'file_name': req.file.filename
     }
-    //SendEmail(ans);
+    console.log(req.file);
+    SendEmail(ans);
     res.json(ans);
 });
 

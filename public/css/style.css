@@ -13,11 +13,14 @@ body {
 
 h1 {
     font-family: 'Inter Regular' !important;
-    text-shadow: 2px 2px #d35400; /*ff0000*/
+    text-shadow: 2px 2px #d35400;
+    /*ff0000*/
 }
-h4{
+
+h4 {
     font-family: 'Inter Regular' !important;
 }
+
 .block {
     display: inline-block !important;
 }
@@ -25,17 +28,21 @@ h4{
 .box {
     margin-left: 55px !important;
     margin-right: 55px !important;
-    border: none !important;    
+    border: none !important;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
 }
-#inputfile{
+
+#inputfile {
     border: none !important;
     text-decoration: none !important;
     font-family: 'Inter Regular' !important;
 }
-#inputmessage{
-    /* font-family: 'Inter Regular' !important; */
+
+#ipt {
+    font-family: 'Inter Regular' !important;
+    font-weight: 500 !important;
 }
+
 @font-face {
     font-family: 'Inter Regular';
     font-style: normal;

@@ -3,7 +3,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 const multer = require('multer');
-const nodemailer = require('nodemailer');
 const dotenv = require('dotenv').config();
 const cloudinary = require('cloudinary').v2;
 const storage = require('./routes/multer');
@@ -16,7 +15,7 @@ cloudinary.config({
 });
 
 // Middlewares
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({
     extended: false
 }));
@@ -24,7 +23,9 @@ app.use(multer({
     storage: storage
 }).single('file'));
 
-
+app.get('/api', (req,res)=>{
+    res.send('Get is working...')
+});
 app.post('/transfer', async (req, res) => {
     const file = req.file;
     const result = await cloudinary.uploader.upload(file.path);
@@ -35,9 +36,8 @@ app.post('/transfer', async (req, res) => {
         'url': result.secure_url,
         'file_name': req.file.filename
     }
-    console.log(req.file);
     SendEmail(ans);
-    res.json(ans);
+    res.send(`File Sent Successfully to ${ans.to}!`);
 });
 
 const PORT = process.env.PORT || 3000;

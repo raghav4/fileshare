@@ -3,7 +3,7 @@
 ---
 [![PR](https://img.shields.io/badge/PR-Welcome-blue.svg)](https://github.com/raghav4/file-share)
 [![PR](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/raghav4/file-share)
-[![GitLicense](https://gitlicense.com/badge/hereisnaman/gitfame)](https://github.com/raghav4/file-share)
+[![GitLicense](https://gitlicense.com/badge/hereisnaman/gitfame)](https://github.com/raghav4/file-transfer/blob/master/LICENSE)
 
 ## Quick Start
 ```bash

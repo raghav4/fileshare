@@ -9,12 +9,11 @@ const storage = require('./routes/multer');
 const SendEmail = require('./routes/mail');
 
 cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY,
-    api_secret: process.env.API_SECRET
+    cloud_name: CLOUD_NAME,
+    api_key: API_KEY,
+    api_secret: API_SECRET
 });
 
-// Middlewares
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({
     extended: false
@@ -23,10 +22,8 @@ app.use(multer({
     storage: storage
 }).single('file'));
 
-app.get('/api', (req,res)=>{
-    res.send('Get is working...')
-});
 app.post('/transfer', async (req, res) => {
+    console.log('In the transfer route...');
     const file = req.file;
     const result = await cloudinary.uploader.upload(file.path);
     const ans = {
@@ -36,7 +33,7 @@ app.post('/transfer', async (req, res) => {
         'url': result.secure_url,
         'file_name': req.file.filename
     }
-    SendEmail(ans);
+    await SendEmail(ans);
     res.send(`File Sent Successfully to ${ans.to}!`);
 });
 

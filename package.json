@@ -16,8 +16,8 @@
     "cloudinary": "^1.14.0",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
+    "mailgun-js": "^0.22.0",
     "multer": "^1.4.2",
-    "nodemailer": "^6.3.0",
     "now": "^15.8.5"
   },
   "devDependencies": {

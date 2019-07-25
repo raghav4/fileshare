@@ -25,7 +25,7 @@ app.use(multer({
 app.post('/transfer', async (req, res) => {
     console.log('In the transfer route...');
     const file = req.file;
-    const result = await cloudinary.uploader.upload(file.path);
+    const result = await cloudinary.uploader.upload(file.path, {resource_type: "raw", public_id: file.filename});
     const ans = {
         'message': req.body.message,
         'from': req.body.sender,

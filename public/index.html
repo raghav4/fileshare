@@ -22,14 +22,14 @@
     <br>
     <h1 class="heading">File Transfer <i class="far fa-share-square"></i></h1>
     <div class="ui segment box">
-        <h4>Upload your files here <i class="fas fa-upload"></i></h4>
-        <input type="file" name="file" form="usrform">
+        <h4>Upload your files here<span style="color:red">*</span><i class="fas fa-upload"></i></h4>
+        <input type="file" name="file" form="usrform" required>
         <form class="ui form" action="/transfer" method="POST" id="usrform" enctype="multipart/form-data">
             <div class="field">
                 <br>
-                <label id="ipt"><b>Send to</b></label>
+                <label id="ipt"><b>Send to<span style="color:red">*</span></b></label>
                 <input type="email" name="primaryEmail" placeholder="Email" id="ipt" required>
-                <label id="ipt"><b>Your Name</b></label>
+                <label id="ipt"><b>Your Name<span style="color:red">*</span></b></label>
                 <input type="text" name="sender" placeholder="Your Name" id="ipt" required>
                 <label id="ipt"><b>Message</b></label>
                 <textarea rows="2" spellcheck="true" name="message" form="usrform" placeholder="Enter your message here"

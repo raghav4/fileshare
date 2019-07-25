@@ -9,9 +9,9 @@ const storage = require('./routes/multer');
 const SendEmail = require('./routes/mail');
 
 cloudinary.config({
-    cloud_name: CLOUD_NAME,
-    api_key: API_KEY,
-    api_secret: API_SECRET
+    cloud_name: 'cloudinary-cloud-name',
+    api_key: 'cloudinary-api-key',
+    api_secret: 'cloudinary-api-secret'
 });
 
 app.use(express.static(__dirname + '/public'));
@@ -34,7 +34,7 @@ app.post('/transfer', async (req, res) => {
         'file_name': req.file.filename
     }
     await SendEmail(ans);
-    res.send(`File Sent Successfully to ${ans.to}!`);
+    res.send(`File Sent Successfully to ${ans.to}, however it might take sometime to receive the email.`);
 });
 
 const PORT = process.env.PORT || 3000;
